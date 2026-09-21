@@ -1,0 +1,12 @@
+{
+    "language": "CS",
+    "namespace": "D365.Community.Model",
+    "suppressINotifyPattern": true,
+    "suppressGeneratedCodeAttribute": true,
+    "emitEntityETC": false,
+    "emitVirtualAttributes": true,
+    "emitFieldsClasses": true,
+    "entityTypesFolder": "Entities",
+    "optionSetsTypesFolder": "OptionSets",
+    "messagesTypesFolder": "Messages"
+}

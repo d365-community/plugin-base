@@ -1,0 +1,6 @@
+﻿{
+    "entityNamesFilter": [
+        "account",
+		"contact"
+    ]
+}

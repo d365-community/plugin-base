@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+        <HasSharedItems>true</HasSharedItems>
+        <SharedGUID>a51282e5-7f12-4705-9073-55418f102c55</SharedGUID>
+    </PropertyGroup>
+    <PropertyGroup Label="Configuration">
+        <Import_RootNamespace>D365.Community.Model</Import_RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\PluginListener.cs">
+      <Link>Base\PluginListener.cs</Link>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\Comparator.cs">
+      <Link>Base\Comparator.cs</Link>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\EntityUtil.cs">
+      <Link>Base\EntityUtil.cs</Link>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\UserSettings.cs">
+      <Link>Base\UserSettings.cs</Link>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\Translator.cs">
+      <Link>Base\Translator.cs</Link>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\WebresourceUtil.cs">
+      <Link>Base\WebresourceUtil.cs</Link>
+    </Compile>
+	<Compile Include="$(MSBuildThisFileDirectory)EntityOptionSetEnum.cs" />
+	<Compile Include="$(MSBuildThisFileDirectory)Entities\account.cs" />
+	<Compile Include="$(MSBuildThisFileDirectory)Entities\contact.cs" />
+	<Compile Include="$(MSBuildThisFileDirectory)OptionSets\powerpagelanguages.cs" />
+    </ItemGroup>
+</Project>

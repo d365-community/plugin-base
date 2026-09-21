@@ -12,5 +12,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\PluginListener.cs">
       <Link>Base\PluginListener.cs</Link>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\Comparator.cs">
+      <Link>Base\Comparator.cs</Link>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\Shared\Base\EntityUtil.cs">
+      <Link>Base\EntityUtil.cs</Link>
+    </Compile>
+	<Compile Include="$(MSBuildThisFileDirectory)EntityOptionSetEnum.cs" />
+	<Compile Include="$(MSBuildThisFileDirectory)Entities\account.cs" />
+	<Compile Include="$(MSBuildThisFileDirectory)Entities\contact.cs" />
+	<Compile Include="$(MSBuildThisFileDirectory)OptionSets\powerpagelanguages.cs" />
   </ItemGroup>
 </Project>

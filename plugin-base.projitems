@@ -9,6 +9,12 @@
     <Import_RootNamespace>D365.Community</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\Plugin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\EntityUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\PluginListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\Comparator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\Translator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\UrlUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\UserSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\Base\WebresourceUtil.cs" />
   </ItemGroup>
 </Project>
