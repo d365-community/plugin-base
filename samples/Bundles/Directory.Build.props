@@ -1,0 +1,34 @@
+﻿<Project>
+	<PropertyGroup>
+		<TargetFramework>net462</TargetFramework>
+		<PowerAppsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\PowerApps</PowerAppsTargetsPath>
+		<ProjectTypeGuids>{4C25E9B5-9FA6-436c-8E19-B395D2A65FAF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+		<PackageId>D365.Community.$(MSBuildProjectName)</PackageId>
+		<RootNamespace>D365.Community.$(MSBuildProjectName)</RootNamespace>
+		<AssemblyName>D365.Community.Bundle.$(MSBuildProjectName)</AssemblyName>
+		<Authors>d365-community</Authors>
+		<Company>d365-community</Company>
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Core"/>
+		<Reference Include="System.Xml.Linq"/>
+		<Reference Include="System.Data.DataSetExtensions"/>
+		<Reference Include="Microsoft.CSharp"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="System.Net.Http"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Runtime.Serialization"/>
+		<Reference Include="System.Runtime.Caching"/>
+		<Reference Include="System.Windows.Forms"/>
+		<Reference Include="System.ComponentModel.Composition"/>
+		<Reference Include="System.ComponentModel.DataAnnotations"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.60" PrivateAssets="All"/>
+		<PackageReference Include="Microsoft.PowerApps.MSBuild.Plugin" Version="1.*" PrivateAssets="All"/>
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.*" PrivateAssets="All"/>
+	</ItemGroup>
+	<Import Project="..\Shared\$(MSBuildProjectName).Model.projitems" Label="Shared"/>
+</Project>

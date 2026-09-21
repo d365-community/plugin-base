@@ -1,0 +1,11 @@
+*.user
+*.cache
+*.DotSettings
+*.sln.DotSettings
+/packages
+/.idea
+/.vs
+/**/.vs
+/**/bin
+/**/obj
+.github

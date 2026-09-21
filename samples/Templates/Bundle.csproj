@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.props')" />
+    <PropertyGroup>
+        <AssemblyVersion>1.0.%YYMM%.1</AssemblyVersion>
+        <FileVersion>1.0.%YYMM%.1</FileVersion>
+        <Version>$(FileVersion)</Version>
+        <Description>Description</Description>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- PackageReference Include="abc" Version="x.x.x"/ -->
+    </ItemGroup>
+    <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.targets" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.targets')" />
+</Project>

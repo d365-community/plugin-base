@@ -1,0 +1,52 @@
+﻿<Project>
+	<PropertyGroup>
+		<TargetFramework>net462</TargetFramework>
+		<Nullable>disable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>false</ImplicitUsings>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\samples.snk</AssemblyOriginatorKeyFile>
+		<RootNamespace>D365.Community.$(MSBuildProjectName)</RootNamespace>
+		<AssemblyName>D365.Community.Plugin.$(MSBuildProjectName)</AssemblyName>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<FileAlignment>512</FileAlignment>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Core"/>
+		<Reference Include="System.Xml.Linq"/>
+		<Reference Include="System.Data.DataSetExtensions"/>
+		<Reference Include="Microsoft.CSharp"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="System.Net.Http"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Runtime.Serialization"/>
+		<Reference Include="System.Runtime.Caching"/>
+		<Reference Include="System.Windows.Forms"/>
+		<Reference Include="System.ComponentModel.Composition"/>
+		<Reference Include="System.ComponentModel.DataAnnotations"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.60"/>
+	</ItemGroup>
+	<Import Project="..\Shared\$(MSBuildProjectName).Model.projitems" Label="Shared"/>
+</Project>
