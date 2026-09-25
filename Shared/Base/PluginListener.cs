@@ -83,12 +83,17 @@ namespace D365.Community.Shared.Base
 
         protected IOrganizationService GetServiceSecured(IServiceProvider serviceProvider, IPluginExecutionContext context)
         {
-            return ((IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory))).CreateOrganizationService(context.UserId);
+            return GetFactory(serviceProvider).CreateOrganizationService(context.UserId);
+        }
+
+        protected IOrganizationService GetServiceSecured(IServiceProvider serviceProvider, Guid userId)
+        {
+            return GetFactory(serviceProvider).CreateOrganizationService(userId);
         }
 
         protected IOrganizationService GetServiceElevated(IServiceProvider serviceProvider)
         {
-            return ((IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory))).CreateOrganizationService(null);
+            return GetFactory(serviceProvider).CreateOrganizationService(null);
         }
 
         protected bool GetTarget<T>(IPluginExecutionContext context, out T entity) where T : Entity
@@ -201,6 +206,11 @@ namespace D365.Community.Shared.Base
         protected void SetOutputParameter<T>(IPluginExecutionContext context, string parameter, T value)
         {
             context.OutputParameters[parameter] = value;
+        }
+
+        private static IOrganizationServiceFactory GetFactory(IServiceProvider serviceProvider)
+        {
+            return ((IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory)));
         }
 
         private class LoggingService
