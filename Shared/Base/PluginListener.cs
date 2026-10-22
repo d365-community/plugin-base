@@ -3,6 +3,7 @@ using Microsoft.Xrm.Sdk.PluginTelemetry;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.ServiceModel;
 
 namespace D365.Community.Shared.Base
 {
@@ -56,6 +57,54 @@ namespace D365.Community.Shared.Base
                         logging.DumpErrorDetails(LoggingService.Level.Error, ipe);
                     }
                     throw;
+                }
+                catch (FaultException fe)
+                {
+                    var be = fe.InnerException?.GetBaseException();
+                    if (be is InvalidPluginExecutionException ipe)
+                    {
+                        var message = be.Message ?? "--no error message--";
+                        if (ipe.Status == OperationStatus.Succeeded)
+                        {
+                            logging.LogFullContext(LoggingService.Level.Warning, context);
+                            logging.LogWarning("Message:");
+                            logging.LogWarning(message);
+                        }
+                        else
+                        {
+                            logging.LogFullContext(LoggingService.Level.Error, context);
+                            logging.LogError("Message:");
+                            logging.LogError(message);
+                        }
+
+                        logging.LogInformation("Traces:");
+                        foreach (var trace in traces)
+                        {
+                            logging.LogInformation(trace);
+                        }
+
+                        if (ipe.Status != OperationStatus.Succeeded)
+                        {
+                            logging.DumpErrorDetails(LoggingService.Level.Error, ipe);
+                        }
+
+                        throw be;
+                    }
+                    else
+                    {
+                        var message = fe.GetBaseException().Message ?? "--no error message--";
+                        logging.LogFullContext(LoggingService.Level.Fatal, context);
+                        logging.LogFatal("Message:");
+                        logging.LogFatal(message);
+                        logging.DumpErrorDetails(LoggingService.Level.Fatal, fe);
+                        logging.LogInformation("Traces:");
+                        foreach (var trace in traces)
+                        {
+                            logging.LogInformation(trace);
+                        }
+
+                        throw new InvalidPluginExecutionException(message, fe);
+                    }
                 }
                 catch (Exception e)
                 {
@@ -338,6 +387,7 @@ namespace D365.Community.Shared.Base
                     Log(lvl, $" - {postEntityImage.Key} -> {postEntityImage.Value}");
                 }
                 Log(lvl, "StackTrace:");
+                Log(lvl, e.GetBaseException().GetType().FullName);
                 Log(lvl, e.GetBaseException().StackTrace);
             }
 
